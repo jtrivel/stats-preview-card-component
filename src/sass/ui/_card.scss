@@ -1,0 +1,129 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.card {
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: v.$cardBg;
+  @include m.grid(1, 2rem);
+  @include m.tablet {
+    @include m.grid(2, 2rem);
+  }
+
+  &__img {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: rgb(64, 4, 102);
+      opacity: 0.6;
+      left: 0;
+      top: 0;
+    }
+    @include m.tablet {
+      grid-column: 2 /3;
+      grid-row: 1/2;
+    }
+  }
+
+  &__mobileimg {
+    width: 100%;
+    object-fit: cover;
+    @include m.tablet {
+      display: none;
+    }
+    @include m.desktop {
+      display: none;
+    }
+  }
+
+  &__deskimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    @include m.tablet {
+      display: block;
+    }
+    @include m.desktop {
+      display: block;
+    }
+  }
+
+  &__content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include m.tablet {
+      grid-column: 1 / 2;
+      justify-content: space-around;
+      padding: 2rem 5rem;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    font-family: v.$secondaryFont;
+    font-weight: 400;
+    @include m.tablet {
+      text-align: left;
+      gap: 3rem;
+    }
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    color: v.$whiteMain;
+    font-weight: 700;
+  }
+
+  &__span {
+    color: v.$accent;
+  }
+
+  &__desc {
+    line-height: 1.5;
+  }
+
+  &__stats {
+    font-family: v.$secondaryFont;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include m.tablet {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  &__numbers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include m.tablet {
+      align-items: flex-start;
+    }
+  }
+
+  &__number {
+    font-family: v.$primaryFont;
+    color: v.$whiteMain;
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  &__spaninside {
+    color: v.$whiteH;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+}
